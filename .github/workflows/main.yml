@@ -18,29 +18,29 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '20'
-        # Pointing to the Backend lock file specifically fixes your error
         cache: 'npm'
+        # Points to Backend to resolve your previous 'lock file not found' error
         cache-dependency-path: './Backend/package-lock.json'
 
-    # 1. Build & Test Backend
+    # 1. Build & Test Backend (Fulfills Task 3: Testing)
     - name: Backend Build & Test
       run: |
         cd Backend
         npm install
-        # This fulfills the "Continuous Testing" requirement
-        npm test || echo "Tests passed or placeholder test executed"
+        # Executes your Naive Bayes tests and shows the detailed report
+        npm test -- --verbose
 
     # 2. Build Frontend
     - name: Frontend Build
       run: |
         cd frontend
         npm install
-        # This checks if the React/Frontend code compiles correctly
         npm run build --if-present
 
-    # 3. Docker Build (Task 4: Containerization)
+    # 3. Docker Build (Fulfills Task 4: Containerization)
     - name: Docker Image Build Check
       run: |
-        # This command looks specifically for the file inside the Backend folder
-        docker build -t journal-backend:latest -f ./Backend/Dockerfile ./Backend
-        echo "Docker image built successfully!"
+        cd Backend
+        # Builds the image using the Dockerfile inside the Backend folder
+        docker build -t journal-backend:latest .
+        echo "Tests passed and Docker image built successfully!"
