@@ -1,4 +1,5 @@
 import './Register.css';  
+import API from "./config";
 
 import { useState } from "react";
 import axios from "axios";
@@ -8,7 +9,7 @@ export default function Register() {
   const [password, setPassword] = useState("");
 
   const register = async () => {
-    await axios.post("http://localhost:5000/register", { email, password });
+    await axios.post(`${API}/register`, { email, password });
     alert("Registered! Now login.");
     window.location.href = "/";
   };

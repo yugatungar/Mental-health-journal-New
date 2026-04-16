@@ -2,6 +2,7 @@ import './Journal.css';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import MoodFeedback from "./MoodFeedback";
+import API from "./config";
 
 export default function Journal() {
   const [text, setText] = useState("");
@@ -15,7 +16,7 @@ export default function Journal() {
 
   const fetchEntries = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/journals", { withCredentials: true });
+      const res = await axios.get(`${API}/journals`, { withCredentials: true });
       setEntries(res.data);
     } catch {
       window.location.href = "/";
@@ -24,7 +25,7 @@ export default function Journal() {
 
   const addEntry = async () => {
     if (!text) return;
-    const res = await axios.post("http://localhost:5000/journals", { text }, { withCredentials: true });
+    const res = await axios.post(`${API}/journals`, { text }, { withCredentials: true });
     setEntries([res.data, ...entries]);
     setText("");
 
@@ -36,12 +37,12 @@ export default function Journal() {
   };
 
   const deleteEntry = async (id) => {
-    await axios.delete(`http://localhost:5000/journals/${id}`, { withCredentials: true });
+    await axios.delete(`${API}/journals/${id}`, { withCredentials: true });
     setEntries(entries.filter(e => e.id !== id));
   };
 
   const logout = async () => {
-    await axios.post("http://localhost:5000/logout", {}, { withCredentials: true });
+    await axios.post(`${API}/logout`, {}, { withCredentials: true });
     window.location.href = "/";
   };
 

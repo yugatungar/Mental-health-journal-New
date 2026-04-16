@@ -1,6 +1,7 @@
 import './Login.css';    
 import { useState } from "react";
 import axios from "axios";
+import API from "./config";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -14,7 +15,7 @@ export default function Login() {
 
     try {
       await axios.post(
-        "http://localhost:5000/login",
+        `${API}/login`,
         { email, password },
         { withCredentials: true }
       );
