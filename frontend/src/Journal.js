@@ -26,7 +26,7 @@ export default function Journal() {
   const addEntry = async () => {
     if (!text) return;
     const res = await axios.post(`${API}/journals`, { text }, { withCredentials: true });
-    setEntries([res.data, ...prev]);
+    setEntries([res.data, ...entries]);
     setText("");
 
     // Show mood feedback
