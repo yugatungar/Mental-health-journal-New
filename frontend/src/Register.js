@@ -38,3 +38,4 @@ export default function Register() {
       </div>
   );
 }
+console.log("testing deploy");
