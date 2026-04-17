@@ -1,58 +1,41 @@
 /* Card container */
-.container {
-  max-width: 400px;      /* width of the card */
-  margin: 80px auto;     /* center vertically + horizontally */
-  padding: 30px;
+.register-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f4f4;
+}
+
+.register-card {
+  width: 350px;
   background: white;
+  padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
-/* Title */
-.container h2 {
+.register-card h2 {
   margin-bottom: 20px;
-  color: #333;
 }
 
-/* Inputs */
-.container input {
-  width: 90%;            /* smaller than container */
-  max-width: 300px;      /* doesn’t grow too big */
+.register-card input {
+  width: 100%;
   padding: 10px;
-  margin: 10px 0;
-  border-radius: 5px;
+  margin-bottom: 15px;
   border: 1px solid #ccc;
-  box-sizing: border-box;
-  font-size: 16px;
+  border-radius: 6px;
 }
 
-/* Buttons */
-.container button {
-  width: 90%;
-  max-width: 300px;
-  padding: 12px;
-  border-radius: 5px;
-  border: none;
-  background-color: #4caf50;
+.register-card button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
   color: white;
-  font-weight: bold;
-  margin-top: 12px;
-  font-size: 16px;
-}
-
-.container button:hover {
-  background-color: #45a049;
-}
-
-/* Links */
-.container a {
-  color: #4caf50;
-  text-decoration: none;
-}
-
-.container a:hover {
-  text-decoration: underline;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 /* Responsive: make card smaller on mobile */
