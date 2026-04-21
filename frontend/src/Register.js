@@ -9,9 +9,28 @@ export default function Register() {
   const [password, setPassword] = useState("");
 
   const register = async () => {
-    await axios.post(`${API}/register`, { email, password });
-    alert("Registered! Now login.");
-    window.location.href = "/";
+    // Email validation (regex)
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email address");
+      return;
+    }
+
+    // Password validation
+    if (password.length < 6) {
+      alert("Password must be at least 6 characters");
+      return;
+    }
+
+    try {
+      await axios.post(`${API}/register`, { email, password });
+      alert("Registered! Now login.");
+      window.location.href = "/";
+    } catch (error) {
+      alert("Registration failed");
+      console.error(error);
+    }
   };
 
   return (
